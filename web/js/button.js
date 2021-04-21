@@ -3,6 +3,7 @@ d3.select('#reset')
         selectedKeys.splice(0, selectedKeys.length);
         currentDatelist.splice(0, currentDatelist.length);
         flowFieldVis.setValue(false);
+        mapboxSvg.selectAll('*').remove();
         statisticsShow(true);
         splitLineClear();
         subFlowClear();
