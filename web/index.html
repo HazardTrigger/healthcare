@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <title>Diffvis: Visual comparison for the spatiotemporal diffusion patterns of epidemic</title>
+    <link href="css/index.css" rel="stylesheet"/>
+    <link href="css/leaflet.css" rel="stylesheet"/>
+    <link href="css/spin.css" rel="stylesheet">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.css" rel="stylesheet"/>
+    <link href="css/dat.gui.css" rel="stylesheet">
+
+    <script src="/eel.js" type="text/javascript"></script>
+    <script src="lib/legacy/spin.js"></script>
+    <script src="lib/legacy/dat.gui.min.js"></script>
+    <script src="lib/legacy/d3.v4.min.js"></script>
+    <script src="lib/legacy/d3-v4-grid.js"></script>
+    <script src="lib/legacy/d3-scale.min.js"></script>
+    <script src="https://d3js.org/d3-array.v2.min.js"></script>
+    <script src="lib/legacy/d3-scale-chromatic.js"></script>
+    <script src="lib/legacy/d3-interpolate-path.js"></script>
+    <script src="lib/legacy/jquery-3.4.0.min.js"></script>
+    <script src="lib/legacy/deck.gl.js"></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.9.1/mapbox-gl.js"></script>
+    <script src="lib/legacy/leaflet.js"></script>
+    <script src="lib/legacy/leaflet-providers.js"></script>
+</head>
+
+<body>
+<div id="root">
+    <div id="left">
+        <div id="leaf-top">
+            <div id="map">
+                <div id="overlay"></div>
+                <div id="left-flowhist" class="flowhist">
+                    <svg style="position: absolute; width: inherit; height: inherit">
+                        <text id="left-week" class="flowHistUnit">(week)</text>
+                    </svg>
+                </div>
+                <div id="right-flowhist" class="flowhist">
+                    <svg style="position: absolute; width: inherit; height: inherit">
+                        <text id="right-week" class="flowHistUnit">(week)</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div id="leaft-bottom">
+            <div id="left-button">
+                <button class="flowbtn" id="split"></button>
+                <button class="flowbtn" id="compute"></button>
+            </div>
+            <div id="tabview">
+                <div class="tab" id="tablist">
+                    <button class="tablinks" id="confirmed">Confirmed</button>
+                    <button class="tablinks" id="death">Death</button>
+                    <button id="reset">Reset</button>
+                </div>
+                <div class="tabcontent" id="tabview_stream" style="display: flex">
+                    <div id="streamTooltip" class="tooltip"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="right">
+        <div id="rankLollipop" class="statistics"></div>
+        <div id="stateHist" class="statistics"></div>
+        <div id="deathRate" class="statistics"></div>
+    </div>
+</div>
+
+<script src="js/legacy/setting.js"></script>
+<script src="js/legacy/util.js"></script>
+<script src="js/legacy/map-mapbox.js"></script>
+<script src="js/legacy/stream.js"></script>
+<script src="js/legacy/flowhist.js"></script>
+<script src="js/legacy/state-rankLollipop.js"></script>
+<script src="js/legacy/state-hist.js"></script>
+<script src="js/legacy/state-deathRate.js"></script>
+<script src="js/legacy/interactiveBtn.js"></script>
+<script src="js/legacy/overlayControl.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,448 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/*ul {*/
+/*    list-style: none;*/
+/*}*/
+
+#root {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    border: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+    /* background-color: #f6f4e6  原背景色*/
+    background-color: #222;
+}
+
+#top{
+    display: flex;
+    width: 100%;
+    height: 20%;
+    border: none;
+    flex-wrap: wrap;
+    background-color: #222
+}
+
+#left {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 60%;
+    background-color: #222;
+    border: none;
+}
+
+#right {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 100%;
+    background-color: #222;
+    width: 40%;
+    border: none;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#leaf-top {
+    display: flex;
+    flex-direction: column;
+    height: 75%;
+    width: 100%;
+    background-color: #222;
+    border: 1px solid rgba(0, 0, 0, .2);
+}
+
+#leaft-bottom {
+    display: flex;
+    flex-direction: row;
+    background-color: #222;
+    height: 25%;
+    width: 100%;
+    border: none;
+}
+
+/*#country0, #country1 {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    height: 100%;*/
+/*    width: 50%;*/
+/*    background-color: #222;*/
+/*    overflow-y: auto;*/
+/*    overflow-x: hidden;*/
+/*    border: 1px solid rgba(0, 0, 0, .2);*/
+/*}*/
+
+/*#top-left, #top-right {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    !*justify-content: space-between;*!*/
+/*    height: 100%;*/
+/*    width: 30%;*/
+/*    border: 1px solid rgba(0, 0, 0, .2);*/
+/*}*/
+
+#map {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border: none;
+    background-color: #222;
+}
+
+/*#stackbar, #bubblechart {*/
+/*    display: flex;*/
+/*    height: 25%;*/
+/*    width: 100%;*/
+/*    border: 2px solid rgba(0, 0, 0, .2);*/
+/*}*/
+
+/*#sortcontainer {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    height: 25%;*/
+/*    width: 100%;*/
+/*    border: none;*/
+/*}*/
+
+/*#sort {*/
+/*    display: flex;*/
+/*    height: 90%;*/
+/*    width: 100%;*/
+/*    border: 2px solid rgba(0, 0, 0, .2);*/
+/*}*/
+
+/*#sorttab {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    height: 10%;*/
+/*    width: 100%;*/
+/*    border: 2px solid rgba(0, 0, 0, .2);*/
+/*}*/
+
+/*#predictChart {*/
+/*    display: flex;*/
+/*    width: 100%;*/
+/*    height: 25%;*/
+/*    border: 2px solid rgba(0, 0, 0, .2);*/
+/*}*/
+
+#bottom {
+    height: 25%;
+    width: 100%;
+    border: none;
+}
+
+#tabview_stream {
+    display: flex; 
+    height: 90%;
+    background-color: #222;
+    width: 100%;
+    /* border: 1px solid rgba(0, 0, 0, .2); */
+}
+
+/*#hot{*/
+/*    display: flex;*/
+/*    height: 80%;*/
+/*    width: 100%;*/
+/*    background-color: #222;*/
+/*    overflow-x: hidden;*/
+/*    overflow-y: auto;*/
+/*    !* border: 1px solid rgba(0, 0, 0, .2);  *!*/
+/*}*/
+
+#tablist {
+    display: flex;
+    height: 10%;
+    width: 100%;
+    z-index: 3;
+    /* background-color: #f6f4e6; */
+    /* border: 1px solid rgba(0, 0, 0, .2); */
+}
+
+#overlay {
+    position: absolute;
+    z-index: 3;
+}
+
+.axis_x > .tick > line {
+    stroke: white;
+}
+
+
+.axis_x > .tick > text {
+    fill: white;
+}
+
+.axis_y > .tick > line {
+    stroke: white;
+}
+
+.axis_y > .tick > text {
+    fill: white;
+}
+
+
+@font-face{
+    font-family: 'Sansation-Bold';
+    src : url('../font/Sansation-Bold.ttf');
+}
+
+.tooltip{
+    font-family: 'Sansation-Bold';
+    z-index: 10;
+    position: absolute;
+    pointer-events: none;
+    color: white;
+    background-color: #222222;
+    padding: 5px 10px;
+    top: 0;
+    left: 0;
+    display: none;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+/*.myRect{*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*.myRect:hover {*/
+/*    border: 10px solid gray;*/
+/*    opacity: 1;*/
+/*}*/
+
+/*.myText {*/
+/*    font-size: 12px;*/
+/*}*/
+
+.tab {
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow: hidden;
+    background-color: #222;
+    z-index: 5;
+}
+
+.tab button {
+    font-family: 'Sansation-Bold';
+    color: white;
+    background-color: #222;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    /*padding: 14px 16px;*/
+    transition: 0.3s;
+    font-size: 16px;
+}
+
+.tab button:hover {
+    /* background-color: #dcd8c4; */
+    color: #ccc;
+}
+
+#tablist button:hover {
+    /* background-color: #dcd8c4; */
+    color: #ccc;
+}
+
+.subflow {
+    /* https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex */
+    /*display: flex;*/
+    /*https://stackoverflow.com/questions/49589800/flexbox-cater-for-2-3-or-1-items-per-row*/
+    flex: 1 0 40%;
+    /*flex: none;*/
+    /*width: 100%;*/
+    height: 25%;
+    border: 0.5px solid #B3B2B2;
+    z-index: 999;
+}
+
+.submap {
+    width: 100%;
+    height: 100%;
+}
+
+/*text {*/
+/*    fill: rgb(109, 108, 108);*/
+/*}*/
+
+/*.hot_yAxis > .tick > text:hover{*/
+/*    cursor: pointer;*/
+/*    fill: #ccc;*/
+/*    !* color:#160f3b; *!*/
+/*    !* ,,"","#a1307" *!*/
+/*}*/
+
+/*.tick > line{*/
+/*    stroke: rgb(109, 108, 108);*/
+/*}*/
+
+/*
+    hiden left bottom mapbox symbol
+    https://stackoverflow.com/questions/30320079/how-to-remove-mapbox-logo-from-bottom-left-corner
+ */
+.mapboxgl-ctrl-logo {
+    display: none !important;
+}
+
+.flowhist {
+    z-index: 1000;
+    position: absolute;
+    display: none;
+    width: 240px;
+    height: 110px;
+    transition: 0.3s;
+}
+
+.stateTitle {
+    font-family: 'Sansation-Bold';
+    font-size: 12px;
+    fill: white;
+}
+
+/*.histAxis > .tick > line {*/
+/*    stroke: #d8d8d8;*/
+/*}*/
+
+/*.histAxis > path {*/
+/*    stroke: #d8d8d8;*/
+/*}*/
+
+/*.histAxis > .tick > text {*/
+/*    fill: #d8d8d8;*/
+/*}*/
+
+#left-button {
+    display: flex;
+    flex-direction: column;
+    width: 4%;
+    height: 100%;
+    border: none;
+    background-color: #222;
+}
+
+#left-button button:hover {
+    /* background-color: #dcd8c4; */
+    background-color: #888;
+}
+
+.tabcontent {
+    display: none;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    animation: fadeEffect 1s;
+}
+
+@keyframes fadeEffect {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+#tabview {
+    display: flex;
+    flex-direction: column;
+    width: 96%;
+    height: 100%;
+    border: none;
+    background-color: #222;
+}
+
+#tab_content {
+    display: flex;
+    height: 80%;
+    width: 100%;
+}
+
+.flowbtn {
+    width: 100%;
+    height: 50%;
+    z-index: 5;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: #222;
+}
+
+#split {
+    background-image: url("../images/split.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#compute {
+    background-image: url("../images/play.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #555;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+.subflowTime {
+    font-family: 'Sansation-Bold';
+    color: white;
+    position: relative;
+    z-index: 1000;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+.countryStream{
+    cursor: pointer;
+}
+
+
+.statistics {
+    /*flex: 1 0 40%;*/
+    height: 33.33%;
+    border: 0.5px solid #B3B2B2;
+    z-index: 999;
+    width: 100%;
+}
+
+.flowHistUnit {
+    font-size: 10px;
+    fill: white;
+    visibility: hidden;
+}
+
+.rightTitle {
+    font-family: 'Sansation-Bold';
+    fill: white;
+    transform: translate(10px, 20px);
+}
