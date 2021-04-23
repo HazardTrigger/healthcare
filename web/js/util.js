@@ -310,3 +310,51 @@ function drawHeatmap(data) {
     });
     map.addLayer(deckHeatMapLayer);
 }
+
+function drawColumnLayer(data) {
+    deckColumnMapLayer = new deck.MapboxLayer({
+        id: "epidemic-column",
+        type: deck.ColumnLayer,
+        data: data,
+        autoHighlight: true,
+        extruded: true,
+        diskResolution: 50,
+        elevationScale: 1,
+        radius: 20000,
+        coverage: 1,
+        opacity: 1,
+        // highlightColor: [241, 250, 44],
+        getElevation: d => +d.confirmed * columnScaleMap[d.state],
+        getPosition: d => [+d.lon, +d.lat],
+        getFillColor: function (d) {
+            let stateColor = stateColorMap[d.state];
+            let stateRgb = d3.rgb(stateColor);
+            return [stateRgb.r, stateRgb.g, stateRgb.b];
+        },
+        visible: true,
+        pickable: true,
+        onHover: columnTooltip
+    });
+    map.addLayer(deckColumnMapLayer);
+}
+
+function columnTooltip(info, evented) {
+    if (info.picked) {
+        d3.select(".deck-tooltip")
+            .style("display", "block")
+            .style("background-color", "#222222")
+            .style("color", "#fff")
+            .style("border-radius", '5px')
+            .style("padding", '5px 10px')
+            .style("transform", "translate(" + info.x + "px," + info.y + "px)")
+            .html(function () {
+                return "State: " + info.object.state + "<br>" +
+                        "County: " + info.object.county + "<br>" +
+                        "Confirmed: " + info.object.confirmed + "<br>" +
+                        "Death: " + info.object.death + "<br>";
+            });
+    } else {
+        d3.select(".deck-tooltip")
+            .style("display", "none");
+    }
+}

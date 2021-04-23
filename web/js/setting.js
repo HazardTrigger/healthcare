@@ -188,6 +188,62 @@ const zoomMap = {
     "Montana": 8
 };
 
+const scaleLevel1 = 8;
+const scaleLevel2 = 20;
+const scaleLevel3 = 30;
+const scaleLevel4 = 12;
+const columnScaleMap = {
+    "New York": scaleLevel1,
+
+    "Illinois": scaleLevel4,
+    "California": scaleLevel4,
+
+    "New Jersey": scaleLevel2,
+    "Massachusetts": scaleLevel2,
+    "Pennsylvania": scaleLevel2,
+    "Michigan": scaleLevel2,
+    "Florida": scaleLevel2,
+    "Texas": scaleLevel2,
+    "Louisiana": scaleLevel2,
+    "Connecticut": scaleLevel2,
+    "Georgia": scaleLevel2,
+    "Maryland": scaleLevel2,
+
+    "Ohio": scaleLevel3,
+    "Indiana": scaleLevel3,
+    "Virginia": scaleLevel3,
+    "Colorado": scaleLevel3,
+    "North Carolina": scaleLevel3,
+    "Tennessee": scaleLevel3,
+    "Arizona": scaleLevel3,
+    "Minnesota": scaleLevel3,
+    "Iowa": scaleLevel3,
+    "Wisconsin": scaleLevel3,
+    "Alabama": scaleLevel3,
+    "Missouri": scaleLevel3,
+    "Mississippi": scaleLevel3,
+    "South Carolina": scaleLevel3,
+    "Nebraska": scaleLevel3,
+    "Nevada": scaleLevel3,
+    "Kentucky": scaleLevel3,
+    "Delaware": scaleLevel3,
+    "Kansas": scaleLevel3,
+    "Utah": scaleLevel3,
+    "Oklahoma": scaleLevel3,
+    "New Mexico": scaleLevel3,
+    "Arkansas": scaleLevel3,
+    "Oregon": scaleLevel3,
+    "South Dakota": scaleLevel3,
+    "New Hampshire": scaleLevel3,
+    "Idaho": scaleLevel3,
+    "Maine": scaleLevel3,
+    "North Dakota": scaleLevel3,
+    "West Virginia": scaleLevel3,
+    "Vermont": scaleLevel3,
+    "Wyoming": scaleLevel3,
+    "Montana": scaleLevel3
+};
+
 let selectedState = [],
     selectedKeys = [];
 
@@ -214,3 +270,9 @@ let splitData = [];
 let deckHeatMapLayer = null;
 
 let heatMapData = [];
+
+let deckColumnMapLayer = null;
+
+let elevationScale = d3.scaleQuantize()
+    .domain([0, 202000])
+    .range([8, 20, 30, 12]);

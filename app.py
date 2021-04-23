@@ -175,4 +175,4 @@ def genFlowData(flow):
 # eel.start("index.html", host="159.226.74.234", port=80, mode=None, close_callback=callback)
 
 # 开发用
-eel.start("healthcare.html", mode="chrome-app")
+eel.start("index.html", mode="chrome-app")

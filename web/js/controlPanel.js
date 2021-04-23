@@ -49,58 +49,58 @@ heatThr.onChange(function (value) {
     });
 });
 
-// var columnConfig = {
-//     elevationScale: 1,
-//     diskResolution: 50,
-//     coverage: 1,
-//     radius: 20000,
-//     opacity: 1,
-//     visible: true,
-// };
-// var columnFolder = gui.addFolder('Epidemic Spatial Statistics');
-//
-// var columnVis = columnFolder.add(columnConfig, 'visible');
-// columnVis.onChange(function (value) {
-//     deckColumnMapLayer.setProps({
-//         visible: value
-//     });
-//      mapboxSvg.style("display", value ? "none": "block");
-// });
-//
-// var columnScale = columnFolder.add(columnConfig, 'elevationScale', 1, 10, 1);
-// columnScale.onChange(function (value) {
-//     deckColumnMapLayer.setProps({
-//         elevationScale: value
-//     });
-// });
-//
-// var columnDiskResolution = columnFolder.add(columnConfig, 'diskResolution', 1, 100);
-// columnDiskResolution.onChange(function (value) {
-//     deckColumnMapLayer.setProps({
-//         diskResolution: value
-//     });
-// });
-//
-// var columnCoverage = columnFolder.add(columnConfig, 'coverage', 0, 1);
-// columnCoverage.onChange(function (value) {
-//     deckColumnMapLayer.setProps({
-//         coverage: value
-//     });
-// });
-//
-// var columnRadius = columnFolder.add(columnConfig, 'radius', 5000, 55000);
-// columnRadius.onChange(function (value) {
-//     deckColumnMapLayer.setProps({
-//         radius: value
-//     });
-// });
-//
-// var columnOpacity = columnFolder.add(columnConfig, 'opacity', 0, 1);
-// columnOpacity.onChange(function (value) {
-//     deckColumnMapLayer.setProps({
-//         opacity: value
-//     });
-// });
+let columnConfig = {
+    elevationScale: 1,
+    diskResolution: 50,
+    coverage: 1,
+    radius: 20000,
+    opacity: 1,
+    visible: true,
+};
+let columnFolder = gui.addFolder('Epidemic Spatial Statistics');
+
+let columnVis = columnFolder.add(columnConfig, 'visible');
+columnVis.onChange(function (value) {
+    deckColumnMapLayer.setProps({
+        visible: value
+    });
+     mapboxSvg.style("display", value ? "none": "block");
+});
+
+let columnScale = columnFolder.add(columnConfig, 'elevationScale', 1, 10, 1);
+columnScale.onChange(function (value) {
+    deckColumnMapLayer.setProps({
+        elevationScale: value
+    });
+});
+
+let columnDiskResolution = columnFolder.add(columnConfig, 'diskResolution', 1, 100);
+columnDiskResolution.onChange(function (value) {
+    deckColumnMapLayer.setProps({
+        diskResolution: value
+    });
+});
+
+let columnCoverage = columnFolder.add(columnConfig, 'coverage', 0, 1);
+columnCoverage.onChange(function (value) {
+    deckColumnMapLayer.setProps({
+        coverage: value
+    });
+});
+
+let columnRadius = columnFolder.add(columnConfig, 'radius', 5000, 55000);
+columnRadius.onChange(function (value) {
+    deckColumnMapLayer.setProps({
+        radius: value
+    });
+});
+
+let columnOpacity = columnFolder.add(columnConfig, 'opacity', 0, 1);
+columnOpacity.onChange(function (value) {
+    deckColumnMapLayer.setProps({
+        opacity: value
+    });
+});
 
 
 // ==============flow-field
