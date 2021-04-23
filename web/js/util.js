@@ -140,7 +140,18 @@ function drawThumbnail(data, container) {
         })
         .on('click', function (event, d) {
             flowFieldVis.setValue(true);
-            let both = d3.selectAll('.subFlow').data()
+            let bothData = _.cloneDeep(d3.selectAll('.subFlow').data());
+            // let flowHistData = Array.from(d3.rollup(bothData, v => v.map(function (e) {
+            //     return {
+            //         index: e.index,
+            //         rate: e.rate,
+            //         state: e.state
+            //     }
+            // }), d => d.state).values());
+
+            // console.log(flowHistData);
+
+            let both = bothData
                 .filter(e => e.index === d.index)
                 .map(d => d.mainflow);
             drawMainFlow(mapboxSvg, d3.merge(both), map)
@@ -181,7 +192,7 @@ function eachFlowTitle(data, div) {
 }
 
 function drawMainFlow(svg, data, map) {
-    svg.style("display", flowFieldVis.getValue() ? "block": "none");
+    svg.style("display", flowFieldVis.getValue() ? "block" : "none");
     svg.selectAll('.arrow')
         .data(data)
         .join(
@@ -227,4 +238,51 @@ function drawMainFlow(svg, data, map) {
     function project(d) {
         return map.project(new mapboxgl.LngLat(+d[0], +d[1]));
     }
+}
+
+function drawFlowHist(svg, title, data, xScale, yScale, xAxis, yAxis, maxRate) {
+    title.html(data[0].state);
+
+    xScale.domain(data.map(d => d.index));
+    yScale.domain([0, maxRate]);
+
+    xAxis
+        .transition()
+        .duration(500)
+        .call(
+            d3.axisBottom(xScale)
+        );
+    yAxis
+        .transition()
+        .duration(500)
+        .call(
+            d3.axisLeft(yScale)
+                .tickFormat(d3.format(".2"))
+        );
+
+    svg.selectAll('rect')
+        .data(data)
+        .join(
+            enter => enter.append('rect')
+                .attr('class', d => `flowBar_${d.index}`)
+                .transition()
+                .duration(500)
+                .attr('x', d => xScale(d.index))
+                .attr('y', d => yScale(d.rate))
+                .attr('width', xScale.bandwidth())
+                .attr('height', d => yScale(0) - yScale(d.rate))
+                .attr('fill', d => stateColorMap[d.state])
+                .selection(),
+            update => update
+                .attr('class', d => `flowBar_${d.index}`)
+                .transition()
+                .duration(500)
+                .attr('x', d => xScale(d.index))
+                .attr('y', d => yScale(d.rate))
+                .attr('width', xScale.bandwidth())
+                .attr('height', d => yScale(0) - yScale(d.rate))
+                .attr('fill', d => stateColorMap[d.state])
+                .selection(),
+            exit => exit.remove()
+        );
 }

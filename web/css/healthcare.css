@@ -256,6 +256,9 @@ html, body {
 }
 
 #hist1 {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 10% 90%;
     position: absolute;
     left: 10px;
     bottom: 10px;
@@ -265,10 +268,20 @@ html, body {
 }
 
 #hist2 {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 10% 90%;
     position: absolute;
     right: 10px;
     bottom: 10px;
     z-index: 10;
     width: 250px;
     height: 200px;
+}
+
+.flowTitle {
+    font-family: 'Sansation-Bold';
+    color: white;
+    font-size: 10px;
+    text-align: center;
 }

@@ -37,28 +37,28 @@ d3.select("#compute")
         eel.processdata(splitData, 'static')(function (data) {
             console.log(data);
             statisticsShow(false);
-            // console.log(d3.merge(d3.transpose(data)))
+
+            let bothData = _.cloneDeep(data);
+            let flowHistData = bothData.map(function (d) {
+                return d.map(function (e) {
+                    return {
+                        index: e.index,
+                        rate: e.rate,
+                        state: e.state
+                    }
+                })
+            });
+            let maxRateY = d3.max(d3.merge(flowHistData), d => d.rate);
+            drawFlowHist(hist1_g, hist1Title, flowHistData[0], hist1XScale, hist1YScale, hist1XAxis, hist1YAxis, maxRateY);
+            drawFlowHist(hist2_g, hist2Title, flowHistData[1], hist2XScale, hist2YScale, hist2XAxis, hist2YAxis, maxRateY);
+
             drawThumbnail(reorderFlowData(data), d3.select('#right'));
             // flowBarStrokeHide();
             // rightFlexRow();
             // rightOverflowOn();
             // flowHistUnitShow();
             //
-            // let leftHistData = data[0].map(function (d) {
-            //     return {
-            //         rate: d.rate,
-            //         index: d.index,
-            //         state: d.state
-            //     };
-            // });
-            // let rightHistData = data[1].map(function (d) {
-            //     return {
-            //         rate: d.rate,
-            //         index: d.index,
-            //         state: d.state
-            //     };
-            // });
-            //
+
             // let maxRateY = d3.max(d3.merge([leftHistData, rightHistData]), d => d.rate);
             // flowHistShow();
             // updateFLowHist(leftHistData, leftSvg, leftHistXScale, leftHistYScale, leftXAxis, leftYAxis, leftXAxis_g, leftYAxis_g, leftStateTitle_g, 0, maxRateY);
