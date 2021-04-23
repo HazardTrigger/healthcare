@@ -140,10 +140,9 @@ function drawThumbnail(data, container) {
         })
         .on('click', function (event, d) {
             flowFieldVis.setValue(true);
+            flowHistBarHightlight(d.index);
             let bothData = _.cloneDeep(d3.selectAll('.subFlow').data());
-            let both = bothData
-                .filter(e => e.index === d.index)
-                .map(d => d.mainflow);
+            let both = bothData.filter(e => e.index === d.index).map(d => d.mainflow);
             drawMainFlow(mapboxSvg, d3.merge(both), map)
         })
 }
@@ -254,21 +253,23 @@ function drawFlowHist(svg, title, data, xScale, yScale, xAxis, yAxis, maxRate) {
         .data(data)
         .join(
             enter => enter.append('rect')
-                .attr('class', d => `flowBar_${d.index}`)
+                .attr('class', d => `flowBar flowBar_${d.index}`)
                 .transition()
                 .duration(500)
                 .attr('x', d => xScale(d.index))
                 .attr('y', d => yScale(d.rate))
+                .style('stroke', 'none')
                 .attr('width', xScale.bandwidth())
                 .attr('height', d => yScale(0) - yScale(d.rate))
                 .attr('fill', d => stateColorMap[d.state])
                 .selection(),
             update => update
-                .attr('class', d => `flowBar_${d.index}`)
+                .attr('class', d => `flowBar flowBar_${d.index}`)
                 .transition()
                 .duration(500)
                 .attr('x', d => xScale(d.index))
                 .attr('y', d => yScale(d.rate))
+                .style('stroke', 'none')
                 .attr('width', xScale.bandwidth())
                 .attr('height', d => yScale(0) - yScale(d.rate))
                 .attr('fill', d => stateColorMap[d.state])
@@ -283,4 +284,14 @@ function flowHistShow(check) {
     } else {
         d3.selectAll('.hists').style('display', 'none');
     }
+}
+
+function flowHistBarHightlight(index) {
+    d3.selectAll(`.flowBar`)
+        .style("stroke", 'none');
+
+    d3.selectAll(`.flowBar_${index}`)
+        .transition()
+        .style("stroke", '#F05A5B')
+        .style("stroke-width", '3px')
 }
