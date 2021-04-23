@@ -254,3 +254,21 @@ html, body {
     z-index: 10;
     right: 10px;
 }
+
+#hist1 {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    z-index: 10;
+   width: 250px;
+    height: 200px;
+}
+
+#hist2 {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 10;
+    width: 250px;
+    height: 200px;
+}
