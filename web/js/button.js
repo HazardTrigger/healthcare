@@ -4,6 +4,7 @@ d3.select('#reset')
         currentDatelist.splice(0, currentDatelist.length);
         flowFieldVis.setValue(false);
         mapboxSvg.selectAll('*').remove();
+        flowHistShow(false);
         statisticsShow(true);
         splitLineClear();
         subFlowClear();
@@ -37,6 +38,7 @@ d3.select("#compute")
         eel.processdata(splitData, 'static')(function (data) {
             console.log(data);
             statisticsShow(false);
+            flowHistShow(true);
 
             let bothData = _.cloneDeep(data);
             let flowHistData = bothData.map(function (d) {
@@ -54,17 +56,8 @@ d3.select("#compute")
 
             drawThumbnail(reorderFlowData(data), d3.select('#right'));
             // flowBarStrokeHide();
-            // rightFlexRow();
-            // rightOverflowOn();
             // flowHistUnitShow();
-            //
-
-            // let maxRateY = d3.max(d3.merge([leftHistData, rightHistData]), d => d.rate);
             // flowHistShow();
-            // updateFLowHist(leftHistData, leftSvg, leftHistXScale, leftHistYScale, leftXAxis, leftYAxis, leftXAxis_g, leftYAxis_g, leftStateTitle_g, 0, maxRateY);
-            // updateFLowHist(rightHistData, rightSvg, rightHistXScale, rightHistYScale, rightXAxis, rightYAxis, rightXAxis_g, rightYAxis_g, rightStateTitle_g, 1, maxRateY);
-            // let reOrderData = reOrderFLowData(d3.merge(data));
-            // renderSnapShot(reOrderData, d3.select('#right'));
             spinner.stop();
         });
     });

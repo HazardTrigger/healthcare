@@ -141,16 +141,6 @@ function drawThumbnail(data, container) {
         .on('click', function (event, d) {
             flowFieldVis.setValue(true);
             let bothData = _.cloneDeep(d3.selectAll('.subFlow').data());
-            // let flowHistData = Array.from(d3.rollup(bothData, v => v.map(function (e) {
-            //     return {
-            //         index: e.index,
-            //         rate: e.rate,
-            //         state: e.state
-            //     }
-            // }), d => d.state).values());
-
-            // console.log(flowHistData);
-
             let both = bothData
                 .filter(e => e.index === d.index)
                 .map(d => d.mainflow);
@@ -285,4 +275,12 @@ function drawFlowHist(svg, title, data, xScale, yScale, xAxis, yAxis, maxRate) {
                 .selection(),
             exit => exit.remove()
         );
+}
+
+function flowHistShow(check) {
+    if (check) {
+        d3.selectAll('.hists').style('display', 'block');
+    } else {
+        d3.selectAll('.hists').style('display', 'none');
+    }
 }
