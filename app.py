@@ -171,8 +171,9 @@ def genFlowData(flow):
     return mainflow
 
 
-# 服务器部署用 host是服务器的ip地址，port端口，其他的不用动
+# For testing. host is the IP address of the server, pay attention to whether the listening port is blocked by the
+# firewall，
 # eel.start("index.html", host="159.226.74.234", port=80, mode=None, close_callback=callback)
 
-# 开发用
+# For Development
 eel.start("index.html", mode="chrome-app")
