@@ -5,50 +5,50 @@ let gui = new dat.GUI({
 $('#overlay').append($(gui.domElement));
 
 // ====================distribution
-// var heatConfig = {
-//     "intensity": 6,
-//     "visible": false,
-//     "opacity": 1,
-//     "radiusPixels": 30,
-//     "threshold": 0.05,
-// };
-//
-// var distributionFloder = gui.addFolder("Epidemic Distribution");
-// var heatVisible = distributionFloder.add(heatConfig, "visible");
-// heatVisible.onChange(function (value) {
-//     deckHeatMapLayer.setProps({
-//         visible: value
-//     });
-// });
-//
-// var heatIntensity = distributionFloder.add(heatConfig, "intensity", 0, 100);
-// heatIntensity.onChange(function (value) {
-//     deckHeatMapLayer.setProps({
-//         intensity: value
-//     });
-// });
-//
-// var heatOpacity = distributionFloder.add(heatConfig, "opacity", 0, 1);
-// heatOpacity.onChange(function (value) {
-//     deckHeatMapLayer.setProps({
-//         opacity: value
-//     });
-// });
-//
-// var heatRadiusPixels = distributionFloder.add(heatConfig, "radiusPixels", 0, 100);
-// heatRadiusPixels.onChange(function (value) {
-//     deckHeatMapLayer.setProps({
-//         radiusPixels: value
-//     });
-// });
-//
-// var heatThr = distributionFloder.add(heatConfig, "threshold", 0, 1, 0.01);
-// heatThr.onChange(function (value) {
-//     deckHeatMapLayer.setProps({
-//         threshold: value
-//     });
-// });
-//
+let heatConfig = {
+    "intensity": 6,
+    "visible": false,
+    "opacity": 1,
+    "radiusPixels": 30,
+    "threshold": 0.05,
+};
+
+let distributionFloder = gui.addFolder("Epidemic Distribution");
+let heatVisible = distributionFloder.add(heatConfig, "visible");
+heatVisible.onChange(function (value) {
+    deckHeatMapLayer.setProps({
+        visible: value
+    });
+});
+
+let heatIntensity = distributionFloder.add(heatConfig, "intensity", 0, 100);
+heatIntensity.onChange(function (value) {
+    deckHeatMapLayer.setProps({
+        intensity: value
+    });
+});
+
+let heatOpacity = distributionFloder.add(heatConfig, "opacity", 0, 1);
+heatOpacity.onChange(function (value) {
+    deckHeatMapLayer.setProps({
+        opacity: value
+    });
+});
+
+let heatRadiusPixels = distributionFloder.add(heatConfig, "radiusPixels", 0, 100);
+heatRadiusPixels.onChange(function (value) {
+    deckHeatMapLayer.setProps({
+        radiusPixels: value
+    });
+});
+
+let heatThr = distributionFloder.add(heatConfig, "threshold", 0, 1, 0.01);
+heatThr.onChange(function (value) {
+    deckHeatMapLayer.setProps({
+        threshold: value
+    });
+});
+
 // var columnConfig = {
 //     elevationScale: 1,
 //     diskResolution: 50,

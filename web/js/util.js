@@ -295,3 +295,18 @@ function flowHistBarHightlight(index) {
         .style("stroke", '#F05A5B')
         .style("stroke-width", '3px')
 }
+
+function drawHeatmap(data) {
+    deckHeatMapLayer = new deck.MapboxLayer({
+        id: "epidemic-heat",
+        type: deck.HeatmapLayer,
+        data: data,
+        colorRange: color_range,
+        getPosition: d => [+d.lon, +d.lat],
+        getWeight: d => +d.confirmed,
+        intensity: 20,
+        threshold: 0.01,
+        visible: false
+    });
+    map.addLayer(deckHeatMapLayer);
+}

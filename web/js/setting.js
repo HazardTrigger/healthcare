@@ -210,3 +210,7 @@ let streamData_death;
 
 let currentDatelist = [];
 let splitData = [];
+
+let deckHeatMapLayer = null;
+
+let heatMapData = [];

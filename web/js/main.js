@@ -21,7 +21,16 @@ d3.csv('./data/american.csv', function (d) {
     initHist = d3.rollup(data, v => d3.sum(v, e => e.confirmed), d => d.date);
     drData = d3.rollup(data, v => d3.sum(v, e => e.death) / d3.sum(v, e => e.confirmed), d => d.state, d => d.date);
     initDR = d3.rollup(data, v => d3.sum(v, e => e.death) / d3.sum(v, e => e.confirmed), d => d.date);
+    heatMapData = d3.rollups(data, v => v, d => d.date).pop()[1]
+        .map(function (d) {
+            return {
+                lon: d.lon,
+                lat: d.lat,
+                confirmed: d.confirmed
+            };
+        });
 
+    drawHeatmap(heatMapData);
     drawLollipop(lollipopGs, initLollipop, null, lollipopXScale, lollipopYScale);
     drawHist(histGs, initHist.values(), null, histXScale, histYScale, nBins);
     drawDRArea(drGs, initDR, null, drXScale, drYScale);
