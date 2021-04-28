@@ -64,7 +64,7 @@ columnVis.onChange(function (value) {
     deckColumnMapLayer.setProps({
         visible: value
     });
-     mapboxSvg.style("display", value ? "none": "block");
+    mapboxSvg.style("display", value ? "none" : "block");
 });
 
 let columnScale = columnFolder.add(columnConfig, 'elevationScale', 1, 10, 1);
@@ -112,7 +112,7 @@ let flowConfig = {
 
 let flowFieldVis = flowFieldFolder.add(flowConfig, "visible");
 flowFieldVis.onChange(function (value) {
-   mapboxSvg.style("display", value ? "block": "none");
+    mapboxSvg.style("display", value ? "block" : "none");
 });
 
 let flowOpacity = flowFieldFolder.add(flowConfig, 'opacity', 0, 1);

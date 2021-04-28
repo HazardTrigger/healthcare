@@ -3,6 +3,7 @@ d3.select('#reset')
         selectedKeys.splice(0, selectedKeys.length);
         currentDatelist.splice(0, currentDatelist.length);
         flowFieldVis.setValue(false);
+        columnVis.setValue(true);
         mapboxSvg.selectAll('*').remove();
         flowHistShow(false);
         statisticsShow(true);
@@ -55,9 +56,6 @@ d3.select("#compute")
             drawFlowHist(hist2_g, hist2Title, flowHistData[1], hist2XScale, hist2YScale, hist2XAxis, hist2YAxis, maxRateY);
 
             drawThumbnail(reorderFlowData(data), d3.select('#right'));
-            // flowBarStrokeHide();
-            // flowHistUnitShow();
-            // flowHistShow();
             spinner.stop();
         });
     });
