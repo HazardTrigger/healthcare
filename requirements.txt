@@ -1,0 +1,6 @@
+matplotlib==3.3.2
+eel==latest
+mplleaflet==latest
+numpy==latest
+pandas==latest
+scipy==latest

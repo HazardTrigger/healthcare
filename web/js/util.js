@@ -140,7 +140,6 @@ function drawThumbnail(data, container) {
         })
         .on('click', function (event, d) {
             flowFieldVis.setValue(true);
-            columnVis.setValue(false);
             flowHistBarHightlight(d.index);
             let bothData = _.cloneDeep(d3.selectAll('.subFlow').data());
             let both = bothData.filter(e => e.index === d.index).map(d => d.mainflow);
@@ -350,9 +349,9 @@ function columnTooltip(info, evented) {
             .style("transform", "translate(" + info.x + "px," + info.y + "px)")
             .html(function () {
                 return "State: " + info.object.state + "<br>" +
-                    "County: " + info.object.county + "<br>" +
-                    "Confirmed: " + info.object.confirmed + "<br>" +
-                    "Death: " + info.object.death + "<br>";
+                        "County: " + info.object.county + "<br>" +
+                        "Confirmed: " + info.object.confirmed + "<br>" +
+                        "Death: " + info.object.death + "<br>";
             });
     } else {
         d3.select(".deck-tooltip")
@@ -361,7 +360,11 @@ function columnTooltip(info, evented) {
 }
 
 function columnShow(check) {
-    deckColumnMapLayer.setProps({
-        visible: check
-    });
+    if (check) {
+        columnVis.setValue(true);
+        mapboxSvg.style("display", check ? "none": "block");
+    } else {
+        columnVis.setValue(false);
+        mapboxSvg.style("display", check ? "none": "block");
+    }
 }
