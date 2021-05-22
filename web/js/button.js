@@ -8,6 +8,7 @@ d3.select('#reset')
         statisticsShow(true);
         splitLineClear();
         subFlowClear();
+        columnShow(true)
         drawStream(stream_g, streamData_confirmed, streamYScale, streamYAxis, Object.keys(zoomMap))
     });
 
@@ -39,6 +40,7 @@ d3.select("#compute")
             console.log(data);
             statisticsShow(false);
             flowHistShow(true);
+            columnShow(false);
 
             let bothData = _.cloneDeep(data);
             let flowHistData = bothData.map(function (d) {

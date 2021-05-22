@@ -358,3 +358,13 @@ function columnTooltip(info, evented) {
             .style("display", "none");
     }
 }
+
+function columnShow(check) {
+    if (check) {
+        columnVis.setValue(true);
+        mapboxSvg.style("display", check ? "none": "block");
+    } else {
+        columnVis.setValue(false);
+        mapboxSvg.style("display", check ? "none": "block");
+    }
+}
