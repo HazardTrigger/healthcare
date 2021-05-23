@@ -12,7 +12,6 @@ d3.csv('./data/american.csv', function (d) {
         }
     }
 }).then(function (data) {
-    console.log(d3.extent(data, d => d.confirmed))
     dataBackUp = _.cloneDeep(data);
     streamData_confirmed = streamDataTransform(data, 'confirmed');
     streamData_death = streamDataTransform(data, 'death');
